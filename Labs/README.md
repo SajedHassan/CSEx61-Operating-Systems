@@ -1,7 +1,5 @@
 # Software Labs
 
-![OS Labs](assets/labs-cover.jpg)
-
 ## Environment
 
 The following is a list of the requirement to run the labs:
