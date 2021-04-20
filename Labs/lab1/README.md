@@ -48,7 +48,9 @@ To process the user command, do the following:
 
 In case a user wants to execute the command in background (i.e. as a background process), he/she writes & at the end of the command. For example, a user command can be:
 
-Shell > firefox &
+```Shell
+firefox &
+```
 
 In this case, your command shell should not wait for the child by skipping the Step 5.
 
@@ -105,14 +107,19 @@ firefox &
 
 **Open** the system monitor and **Search** for all firefox processes.
 
-**Execute** the following commands in the same session, it should show us an error message.
+**Execute** the following command in the same session, it should show us an error message.
 
 ```Shell
 heyy
+```
+
+**Execute** the following command in the same session, it should close the shell from the first time you execute it.
+
+```Shell
 exit
 ```
 
-That's it with the test!
+That's it!
 
 ## Lab requirements
 
