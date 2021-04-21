@@ -29,7 +29,7 @@ Your shell must support the following commands:
     * **Example**: firefox &
     * **Details**: In this case, your shell must execute the command and return immediately, not blocking until the command finishes.
     * **Concepts**: Background execution, signals, signal handlers, processes and asynchronous execution.
-    * **Requirements**: You have to show that the opened process will be nested as a child process to the shell program via opening the task manager found in the operating system like the one shawn in figure 1. Additionally you have to write in a log file when a child process is terminated (main application will be interrupted by a SIGCHLD signal). So you have to implement an interrupt handler to handle this interrupt and do the corresponding action to it.
+    * **Requirements**: You have to show that the opened process will be nested as a child process to the shell program via opening the task manager found in the operating system like the one shown in figure 1. Additionally you have to write in a log file when a child process is terminated (main application will be interrupted by a SIGCHLD signal). So you have to implement an interrupt handler to handle this interrupt and do the corresponding action to it.
 
 | ![System Monitor](sysmonitor.png) |
 |:--:|
@@ -58,7 +58,7 @@ You should keep a log file for your shell program such that whenever a child pro
 
 ## Notes
 
-* You should register the SIGCHLD signal at the beginning of your main as shawn in [this example](https://docs.oracle.com/cd/E19455-01/806-4750/signals-7/index.html), so when a child dies, the parent process receives SIGCHLD (or SIGCLD) signal.
+* You should register the SIGCHLD signal at the beginning of your main as shown in [this example](https://docs.oracle.com/cd/E19455-01/806-4750/signals-7/index.html), so when a child dies, the parent process receives SIGCHLD (or SIGCLD) signal.
 * The parent should always wait on the child_id, don't wait on (-1) or any other hacks you might find on the internet.
 * To see the set of all signals supported on your system, type, kill –l.
 * Use a process monitor package to monitor your processes. Provide a screenshot for your shell parent process and some child processes spawned as background processes. Suggested packages: KSysguard or Gnome-System-Monitor.
