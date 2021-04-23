@@ -59,7 +59,7 @@ You should keep a log file for your shell program such that whenever a child pro
 ## Notes
 
 * You should register the SIGCHLD signal at the beginning of your main as shown in [this example](https://docs.oracle.com/cd/E19455-01/806-4750/signals-7/index.html), so when a child dies, the parent process receives SIGCHLD (or SIGCLD) signal.
-* The parent should always wait on the child_id, [don't wait on (-1) or any other hacks you might find on the internet](https://perldoc.perl.org/functions/waitpid).
+* The parent should always wait on the child_id, [don't wait on (-1) or any other hacks you might find on the internet](https://perldoc.perl.org/functions/waitpid), as this is considered as a bad programming practice.
 * To see the set of all signals supported on your system, type, kill –l.
 * Use a process monitor package to monitor your processes. Provide a screenshot for your shell parent process and some child processes spawned as background processes. Suggested packages: KSysguard or Gnome-System-Monitor.
 * Reading [this article about waitpid(pid_t pid, int *statusPtr, int options)](https://support.sas.com/documentation/onlinedoc/sasc/doc/lr2/waitpid.htm) is a must.
