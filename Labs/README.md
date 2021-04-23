@@ -5,6 +5,7 @@
 The following is a list of the requirement to run the labs:
 
 * Ubuntu operating system
+* All labs/project will be in **C only**, C++ is **not** allowed.
 
 ## Navigate the Labs
 
