@@ -29,7 +29,7 @@ Your shell must support the following commands:
     * **Example**: firefox &
     * **Details**: In this case, your shell must execute the command and return immediately, not blocking until the command finishes.
     * **Concepts**: Background execution, signals, signal handlers, processes and asynchronous execution.
-    * **Requirements**: You have to show that the opened process will be nested as a child process to the shell program via opening the task manager found in the operating system like the one shown in figure 1. Additionally you have to write in a log file when a child process is terminated (main application will be interrupted by a SIGCHLD signal). So you have to implement an interrupt handler to handle this interrupt and do the corresponding action to it.
+    * **Requirements**: You have to show that the opened process will be nested as a child process to the shell program via opening the task manager found in the operating system like the one shown in figure 1. Additionally you have to write in a log file (basic text file) when a child process is terminated (main application will be interrupted by a SIGCHLD signal). So you have to implement an interrupt handler to handle this interrupt and do the corresponding action to it.
 5. **Not required**: cd, variables, echo, and basically all special cases commands that require extra implementation.
 
 | ![System Monitor](sysmonitor.png) |
@@ -55,7 +55,7 @@ firefox &
 
 In this case, your command shell should not wait for the child by skipping the Step 5.
 
-You should keep a log file for your shell program such that whenever a child process terminates, the shell program appends the line “Child process was terminated” to the log file. To do this, you have to write a signal handler that appends the line to the log file when the SIGCHLD signal is received.
+You should keep a log file (basic text file) for your shell program such that whenever a child process terminates, the shell program appends the line “Child process was terminated” to the log file. To do this, you have to write a signal handler that appends the line to the log file when the SIGCHLD signal is received.
 
 ## Notes
 
@@ -130,3 +130,7 @@ That's it!
 * Use Ubuntu operating system for development.
 * Submit the deliverables using the submission form provided in your class.
 * If the submitted code cannot replicate the same video scenario, then this will be considered cheating and the "cheating and plagiarism" policy will be applied.
+
+## Readings & Resources
+
+* [What is a zombie process in Linux?](https://www.tutorialspoint.com/what-is-zombie-process-in-linux)
