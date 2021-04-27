@@ -89,6 +89,8 @@ ls -a -l -h
 
 **Execute** the following commands in the same session, but **show** that shell is stuck and cannot execute other commands while firefox is open.
 
+**Note:** In order for this test to work correctly, firefox has to be closed before executing this command. Also, if firefox is not available, you may use 'gedit' instead.
+
 ```Shell
 firefox
 ```
