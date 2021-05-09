@@ -50,7 +50,7 @@ Your programs should do the following:
     3. How to compile and run your code.
     4. Sample runs.
     5. A comparison between the three methods of matrix multiplication.
-* A 2-min (tolerance of 30 seconds only) video that shows the output of those test cases ([test1](/test1), [test2](/test2), [test3](/test3)).
+* A 2-min (tolerance of 30 seconds only) video that shows the output of those test cases ([test1](test1/), [test2](test2/) & [test3](test3/)).
 
 ## 5. Hints
 
