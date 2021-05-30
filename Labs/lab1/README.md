@@ -1,13 +1,14 @@
-# Simple Shell
+# Simple Shell (Multi-Processing)
 
 ![Shell](shell.png)
 
-## Objectives
+## 1. Objectives
 
 1. Familiarity with system calls in Unix environment.
 2. Introduction to processes and multi-processing.
+3. Introduction to signal handling in Unix environment.
 
-## Problem Statement
+## 2. Problem Statement
 
 It is required to implement a Unix shell program. A shell is simply a program that conveniently allows you to run other programs. Read up on your favorite shell to see what it does.
 
@@ -30,15 +31,63 @@ Your shell must support the following commands:
     * **Details**: In this case, your shell must execute the command and return immediately, not blocking until the command finishes.
     * **Concepts**: Background execution, signals, signal handlers, processes and asynchronous execution.
     * **Requirements**: You have to show that the opened process will be nested as a child process to the shell program via opening the task manager found in the operating system like the one shown in figure 1. Additionally you have to write in a log file (basic text file) when a child process is terminated (main application will be interrupted by a SIGCHLD signal). So you have to implement an interrupt handler to handle this interrupt and do the corresponding action to it.
-5. **Not required**: cd, variables, echo, and basically all special cases commands that require extra implementation.
+5. Shell builtin commands
+    * **Commands**: cd & echo
+    * **Details**: for the case of:
+        * **cd**:
+        * **echo**:
+6. Expression evaluation
 
 | ![System Monitor](sysmonitor.png) |
 |:--:|
 | *Figure 1 Firefox, Calculator and Gedit are child processes to the SimpleShell process** |
 
-## Problem Description
+## 3. Problem Description
 
-To process the user command, do the following:
+The shell program should be written as following psedo code:
+
+```Pseudocode
+function parent_main()
+    register_child_signal(on_child_exit())
+    setup_environment()
+    shell()
+
+
+function on_child_exit()
+    reap_child_zombie()
+    write_to_log_file("Child terminated")
+
+
+function shell()
+    do
+        parse_input(read_input())
+        variable sub
+        switch(input_type):
+            case shell_builtin:
+                execute_shell_bultin();
+            case expression_evaluation:
+                evaluate_expression():
+            case executable_or_error:
+                execute_command():
+
+    while command_is_not_exit
+
+
+function execute_shell_bultin()
+    swirch(command_type):
+        case cd:
+        case echo:
+
+
+function execute_command()
+    child_id = fork()
+    if child:
+        execvp(command parsed)
+        print("Error)
+        exit()
+    else if parent and foreground:
+        waitpid(child)
+```
 
 1. Your command shell should take the user command and its parameter(s), i.e., “ls” and “–l” in this example, and convert them into C strings. (Recall that a C string terminates with a null string, i.e., \0.)
 2. The command shell should create a child process via **fork()**.
@@ -65,7 +114,7 @@ You should keep a log file (basic text file) for your shell program such that wh
 * Use a process monitor package to monitor your processes. Provide a screenshot for your shell parent process and some child processes spawned as background processes. Suggested packages: KSysguard or Gnome-System-Monitor.
 * Reading [this article about waitpid(pid_t pid, int *statusPtr, int options)](https://support.sas.com/documentation/onlinedoc/sasc/doc/lr2/waitpid.htm) is a must.
 
-## Deliverables
+## 4. Deliverables
 
 * Complete C source code, commented thoroughly and clearly.
 * A report that includes:
@@ -136,3 +185,8 @@ That's it!
 ## Readings & Resources
 
 * [What is a zombie process in Linux?](https://www.tutorialspoint.com/what-is-zombie-process-in-linux)
+* [Process states & dealing with zombie processes](https://idea.popcount.org/2012-12-11-linux-process-states/)
+* [Linux Signals](https://devopedia.org/linux-signals)
+* [Important notes on wait() and repeaing zombies](https://man7.org/linux/man-pages/man2/wait.2.html#NOTES)
+* [sigaction(2) — Linux manual page](https://man7.org/linux/man-pages/man2/sigaction.2.html)
+* [signal(2) — Linux manual page](https://man7.org/linux/man-pages/man2/signal.2.html)
