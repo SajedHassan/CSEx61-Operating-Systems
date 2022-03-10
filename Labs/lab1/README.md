@@ -60,7 +60,27 @@ Your shell must support the following commands:
 
 ## 3. Problem Description
 
-The shell program should be written as following psedo code:
+1. Your command shell should take the user command and its parameter(s), i.e., “ls” and “–l” in this example, and convert them into C strings. (Recall that a C string terminates with a null string, i.e., \0.)
+2. The command shell should create a child process via **fork()**.
+3. The child process passes the C strings—the command and parameter(s)—to **execvp()**.
+4. The child exits if **execvp()** returns error.
+5. The parent process, i.e., the command shell, should wait, via [waitpid(pid_t pid, int *statusPtr, int options)](https://support.sas.com/documentation/onlinedoc/sasc/doc/lr2/waitpid.htm) , for the child process to finish.
+6. The command shell gets the next command and repeats the above steps. The command shell terminates itself when the user types exit.
+7. No zombie process should ever exist, you can read more about zombie processes and how to handle them at the [Reading & Resources section](#readings--resources).
+
+In case a user wants to execute the command in background (i.e. as a background process), he/she writes & at the end of the command. For example, a user command can be:
+
+```Shell
+firefox &
+```
+
+In this case, your command shell should not wait for the child by skipping the Step 5.
+
+You should keep a log file (basic text file) for your shell program such that whenever a child process terminates, the shell program appends the line “Child process was terminated” to the log file. To do this, you have to write a signal handler that appends the line to the log file when the SIGCHLD signal is received.
+
+## Pseudocode
+
+The shell program should be written as following pseudocode:
 
 ```Pseudocode
 function parent_main()
@@ -105,24 +125,6 @@ function execute_command()
     else if parent and foreground:
         waitpid(child)
 ```
-
-1. Your command shell should take the user command and its parameter(s), i.e., “ls” and “–l” in this example, and convert them into C strings. (Recall that a C string terminates with a null string, i.e., \0.)
-2. The command shell should create a child process via **fork()**.
-3. The child process passes the C strings—the command and parameter(s)—to **execvp()**.
-4. The child exits if **execvp()** returns error.
-5. The parent process, i.e., the command shell, should wait, via [waitpid(pid_t pid, int *statusPtr, int options)](https://support.sas.com/documentation/onlinedoc/sasc/doc/lr2/waitpid.htm) , for the child process to finish.
-6. The command shell gets the next command and repeats the above steps. The command shell terminates itself when the user types exit.
-7. No zombie process should ever exist, you can read more about zombie processes and how to handle them at the [Reading & Resources section](#Readings-&-Resources).
-
-In case a user wants to execute the command in background (i.e. as a background process), he/she writes & at the end of the command. For example, a user command can be:
-
-```Shell
-firefox &
-```
-
-In this case, your command shell should not wait for the child by skipping the Step 5.
-
-You should keep a log file (basic text file) for your shell program such that whenever a child process terminates, the shell program appends the line “Child process was terminated” to the log file. To do this, you have to write a signal handler that appends the line to the log file when the SIGCHLD signal is received.
 
 ## Notes
 
