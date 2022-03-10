@@ -34,9 +34,25 @@ Your shell must support the following commands:
 5. Shell builtin commands
     * **Commands**: cd & echo
     * **Details**: for the case of:
-        * **cd**:
-        * **echo**:
+        * **cd**: Cover all the following cases (**assume no spaces in path**):
+            * cd
+            * cd ~
+            * cd ..
+            * cd absolute_path
+            * cd relative_path_to_current_working_directory
+        * **echo**: Prints the input after evaluating all experessions (**assume input to echo must be within double quotations**).
+            * echo "wow" => wow
+            * export x=5
+            * echo "Hello $x" => Hello 5
 6. Expression evaluation
+    * **Commands**: export
+    * **Details**: Set values to variables and print variables values. No mathematical operations is needed.
+    * **Export Details**: Accept input of two forms, either a string without spaces, or a full string inside double quotations.
+    * **Example**:
+        * export x=-l
+        * ls $x => Will perform ls -l
+        * export y="Hello world"
+        * echo "$y" => Hello world
 
 | ![System Monitor](sysmonitor.png) |
 |:--:|
@@ -77,6 +93,7 @@ function execute_shell_bultin()
     swirch(command_type):
         case cd:
         case echo:
+        case export:
 
 
 function execute_command()
@@ -95,6 +112,7 @@ function execute_command()
 4. The child exits if **execvp()** returns error.
 5. The parent process, i.e., the command shell, should wait, via [waitpid(pid_t pid, int *statusPtr, int options)](https://support.sas.com/documentation/onlinedoc/sasc/doc/lr2/waitpid.htm) , for the child process to finish.
 6. The command shell gets the next command and repeats the above steps. The command shell terminates itself when the user types exit.
+7. No zombie process should ever exist, you can read more about zombie processes and how to handle them at the [Reading & Resources section](#Readings-&-Resources).
 
 In case a user wants to execute the command in background (i.e. as a background process), he/she writes & at the end of the command. For example, a user command can be:
 
@@ -109,7 +127,6 @@ You should keep a log file (basic text file) for your shell program such that wh
 ## Notes
 
 * You should register the SIGCHLD signal at the beginning of your main as shown in [this example](https://docs.oracle.com/cd/E19455-01/806-4750/signals-7/index.html), so when a child dies, the parent process receives SIGCHLD (or SIGCLD) signal.
-* The parent should always wait on the child_id, [don't wait on (-1) or any other hacks you might find on the internet](https://perldoc.perl.org/functions/waitpid), as this is considered as a bad programming practice.
 * To see the set of all signals supported on your system, type, kill –l.
 * Use a process monitor package to monitor your processes. Provide a screenshot for your shell parent process and some child processes spawned as background processes. Suggested packages: KSysguard or Gnome-System-Monitor.
 * Reading [this article about waitpid(pid_t pid, int *statusPtr, int options)](https://support.sas.com/documentation/onlinedoc/sasc/doc/lr2/waitpid.htm) is a must.
@@ -134,6 +151,8 @@ ls
 mkdir test
 ls
 ls -a -l -h
+export x="-a -l -h"
+ls $x
 ```
 
 **Execute** the following commands in the same session, but **show** that shell is stuck and cannot execute other commands while firefox is open.
