@@ -94,15 +94,17 @@ function on_child_exit()
     write_to_log_file("Child terminated")
 
 
+function setup_environment()
+    cd(Current_Working_Directory)
+
+
 function shell()
     do
         parse_input(read_input())
-        variable sub
+        evaluate_expression():
         switch(input_type):
             case shell_builtin:
                 execute_shell_bultin();
-            case expression_evaluation:
-                evaluate_expression():
             case executable_or_error:
                 execute_command():
 
