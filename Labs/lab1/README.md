@@ -40,7 +40,7 @@ Your shell must support the following commands:
             * cd ..
             * cd absolute_path
             * cd relative_path_to_current_working_directory
-        * **echo**: Prints the input after evaluating all experessions (**assume input to echo must be within double quotations**).
+        * **echo**: Prints the input after evaluating all expressions (**assume input to echo must be within double quotations**).
             * echo "wow" => wow
             * export x=5
             * echo "Hello $x" => Hello 5
