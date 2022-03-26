@@ -28,20 +28,6 @@ A parallelized version of matrix multiplication can be done using one of these t
 * Compare the three implementations according to the following:
     1. Number of threads created.
     2. Execution time taken.
-* Your program **should not** use any of the pthread synchronization functions, except for [pthread_join](https://man7.org/linux/man-pages/man3/pthread_join.3.html), i.e. you're not allowed to use mutual exclusion, or semaphores, or etc.
-* You should never use [pthread_join](https://man7.org/linux/man-pages/man3/pthread_join.3.html) directly after the [pthread_create](https://man7.org/linux/man-pages/man3/pthread_create.3.html), you should use pthread_join only after the main thread has created all the worker (children) threads, otherwise your code works in a sequential manner but just with extra overhead.
-* The use of any synchronization functions, or the improper use of pthread_join, will make the submission totally unacceptable and will result into a zero grade.
-* Your code should handle memory management and sending arguments to threads functions as following:
-  * In the case of (A thread per row) you can do either of the following:
-    * Leave matrices A, B, and C in the global segment and only pass the row number to the thread function by value.
-    * Create A, B, and C in the dynamic heap, then create a struct that has A*, B*, C* (pointers to the arrays) and the row number, then send the struct to the thread function by reference (allocate the struct in the dynamic heap).
-  * In the case of (A thread per element) you can do either of the following:
-    * Leave matrices A, B, and C in the global segment, then create a struct that has the row number, and the column number, send this struct to the thread function by reference (allocate the struct in the dynamic heap).
-    * Create A, B, and C in the dynamic heap, then create a struct that has A*, B*, C* (pointers to the arrays), the row number, and the column number , then send the struct to the thread function by reference (allocate the struct in the dynamic heap).
-  * In all cases, you have to free any allocated memory in the dynamic heap at the end of the worker (child) thread, no memory leak should be allowed.
-* Assume I will not test with matrix size larger than 20 x 20.
-* Your program need to handle any errors and terminate gracefully.
-* You should work on this lab individually.
 
 Your programs should do the following:
 
@@ -117,9 +103,30 @@ Your programs should do the following:
 
     Of course the values of the output matrices should all be the same for all three methods.
 
-* Output to the number of threads created and the time taken on the standout (the console) for all the three methods (three different outputs).
+* **Output to the number of threads created and the time taken on the standout (the console) for all the three methods (three different outputs).**
+* Assume I will not test with matrix size larger than 20 x 20.
+* Your program need to handle any errors and terminate gracefully.
+* You should work on this lab individually.
 
-## 4. Deliverables
+## 4. Synchronization
+
+* Your program **should not** use any of the pthread synchronization functions, except for [pthread_join](https://man7.org/linux/man-pages/man3/pthread_join.3.html), i.e. you're not allowed to use mutual exclusion, or semaphores, or etc.
+* You should never use [pthread_join](https://man7.org/linux/man-pages/man3/pthread_join.3.html) directly after the [pthread_create](https://man7.org/linux/man-pages/man3/pthread_create.3.html), you should use pthread_join only after the main thread has created all the worker (children) threads, otherwise your code will work in a sequential manner but just with extra overhead.
+* The use of any synchronization functions, or the improper use of pthread_join, will make the submission totally unacceptable and will result into a zero grade.
+
+## 5. Memory Management
+
+Your code should handle memory management and sending arguments to threads functions as following:
+
+* In the case of (A thread per row) you can do either of the following:
+  * Leave matrices A, B, and C in the global segment and only pass the row number to the thread function by value.
+  * Create A, B, and C in the dynamic heap, then create a struct that has A*, B*, C* (pointers to the arrays) and the row number, then send the struct to the thread function by reference (allocate the struct in the dynamic heap).
+* In the case of (A thread per element) you can do either of the following:
+  * Leave matrices A, B, and C in the global segment, then create a struct that has the row number, and the column number, send this struct to the thread function by reference (allocate the struct in the dynamic heap).
+  * Create A, B, and C in the dynamic heap, then create a struct that has A*, B*, C* (pointers to the arrays), the row number, and the column number , then send the struct to the thread function by reference (allocate the struct in the dynamic heap).
+* In all cases, you have to free any allocated memory in the dynamic heap at the end of the worker (child) thread, no memory leak should be allowed.
+
+## 6. Deliverables
 
 * Complete source code in C, commented thoroughly and clearly.
 * A make file that we can use to compile/build your code. Note that you need to call the executable matMultp.
@@ -131,7 +138,7 @@ Your programs should do the following:
     5. A comparison between the three methods of matrix multiplication.
 * A 2-min (tolerance of 30 seconds only) video that shows the output of those test cases ([test1](test1/), [test2](test2/) & [test3](test3/)).
 
-## 5. Hints
+## 7. Hints
 
 To measure the execution time, you will need to use code that is similar to this:
 
@@ -151,7 +158,7 @@ main()
 }
 ```
 
-## 6. Frequently Asked Questions
+## 8. Frequently Asked Questions
 
 1. Why the first method (a thread per matrix) is performing better than the second (a thread per row) and the third (a thread per element)?
 
@@ -162,5 +169,6 @@ main()
     In designing multi-threaded programs, you always consider many things, including the threading overhead, the size of the problem, and the level of concurrency. There's no rule for that, you just make your own analysis and take your decision accordingly.
 
 ## Readings & Resources
+
 * [Stack vs Heap Memory.](https://dotnettutorials.net/lesson/stack-vs-heap-memory/)
 * [C Dynamic Memory Allocation.](https://www.programiz.com/c-programming/c-dynamic-memory-allocation)
