@@ -5,10 +5,9 @@
 ## Instructors
 
 * Prof. Dr. Noha Adly (Prof)
-* Eng. Khaled El-Tahan (TA)
+* Eng. Sajed Almorsy(TA)
 
 ## Navigate Course Content
 
-1. [PintOS Project](https://github.com/KhaledElTahan/pintos)
+1. PintOS Project (Coming soon)
 2. [Software Labs](Labs/README.md)
-3. [Tutorials](Tutorials/README.md)
