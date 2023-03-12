@@ -13,4 +13,4 @@ Use the following links to navigate through the labs:
 
 1. [Simple Shell (Multi-Processing)](lab1/README.md)
 2. [Matrix Multiplication (Multi-Threading)](lab2/README.md)
-3. CalTrain (Synchronization and Mutual Exclusion)(Coming soon)
+3. [CalTrain (Synchronization and Mutual Exclusion)](lab3/README.md)
