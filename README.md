@@ -4,7 +4,7 @@
 
 ## Instructors
 
-* Prof. Dr. Noha Adly (Prof)
+* Prof. Dr. Noha Adly (Prof) - Dr. Samia Moujahed (Prof)
 * Eng. Sajed Almorsy(TA)
 
 ## Navigate Course Content

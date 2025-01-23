@@ -1,0 +1,46 @@
+version: '3.9'
+
+services:
+  redis-node-1:
+    image: redis:latest
+    container_name: redis-node-1
+    ports:
+      - "63791:6379"
+    networks:
+      - redis-net
+
+  redis-node-2:
+    image: redis:latest
+    container_name: redis-node-2
+    ports:
+      - "63792:6379"
+    networks:
+      - redis-net
+
+  redis-node-3:
+    image: redis:latest
+    container_name: redis-node-3
+    ports:
+      - "63793:6379"
+    networks:
+      - redis-net
+
+  redis-node-4:
+    image: redis:latest
+    container_name: redis-node-4
+    ports:
+      - "63794:6379"
+    networks:
+      - redis-net
+
+  redis-node-5:
+    image: redis:latest
+    container_name: redis-node-5
+    ports:
+      - "63795:6379"
+    networks:
+      - redis-net
+
+networks:
+  redis-net:
+    driver: bridge
