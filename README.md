@@ -9,5 +9,5 @@
 
 ## Navigate Course Content
 
-1. [Dockerized PintOS Project](https://github.com/SajedHassan/CSEx61-dockerized-pintos/blob/main/Installation_with_docker.md)
+1. [Dockerized PintOS Project](https://github.com/SajedHassan/CSEx61-dockerized-pintos/blob/main/README.md)
 2. [Software Labs](Labs/README.md)
