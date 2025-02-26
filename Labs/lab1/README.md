@@ -138,11 +138,6 @@ function execute_command()
 ## 4. Deliverables
 
 * Complete C source code, commented thoroughly and clearly.
-* A report that includes:
-  * A description of the overall organization of your code and the major functions.
-  * Sample runs.
-  * screenshots for the processes hierarchy in KSysguard (or any similar package) during the execution of your shell program.
-* A 3-min (tolerance of 30 seconds only) video that shows the output of the next test case.
 
 ## Test Case
 
@@ -202,8 +197,7 @@ That's it!
 * Students will be working individually.
 * You can only use C programming language.
 * Use Ubuntu operating system for development.
-* Submit the deliverables using the submission form provided in your class.
-* If the submitted code cannot replicate the same video scenario, then this will be considered cheating and the "cheating and plagiarism" policy will be applied.
+* Submit your code to the online tester.
 
 ## Readings & Resources
 
