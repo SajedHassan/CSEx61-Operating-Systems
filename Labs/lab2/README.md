@@ -82,21 +82,18 @@ Your programs should do the following:
 
     c_per_matrix.txt
 
-        Method: A thread per matrix
         row=2 col=2
         1 2
         3 4
 
     c_per_row.txt
 
-        Method: A thread per row
         row=2 col=2
         1 2
         3 4
 
     c_per_element.txt
 
-        Method: A thread per element
         row=2 col=2
         1 2
         3 4
