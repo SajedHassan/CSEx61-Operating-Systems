@@ -125,15 +125,8 @@ Your code should handle memory management and sending arguments to threads funct
 
 ## 6. Deliverables
 
-* Complete source code in C, commented thoroughly and clearly.
-* A make file that we can use to compile/build your code. Note that you need to call the executable matMultp.
-* A report that describes the following:
-    1. How your code is organized.
-    2. Your code main functions.
-    3. How to compile and run your code.
-    4. Sample runs.
-    5. A comparison between the three methods of matrix multiplication.
-* A 2-min (tolerance of 30 seconds only) video that shows the output of those test cases ([test1](test1/), [test2](test2/) & [test3](test3/)).
+* Make sure to submit your code on the online tester before the deadline to avoid penalties.
+* We will only consider the latest submission.
 
 ## 7. Hints
 
