@@ -43,3 +43,19 @@ CalTrain (the train running in California, USA) has decided to improve its effic
 * This assignment is based on assignment0 offered at Stanford CS140 Operating Systems.
 * There’s no report required.
 * Implementation hints: For more information on how to use locks, condition variables and monitors in C, please check the following [link](https://web.stanford.edu/~ouster/cgi-bin/cs140-spring20/lecture.php?topic=locks#:~:text=Condition%20variables%3A%20used%20to%20wait,re%2Dacquire%20lock%20before%20returning.)
+
+
+## 5. Helpful Resources
+
+What is Mutex?:
+https://youtu.be/oq29KUy29iQ
+
+What are race conditions?:
+https://youtu.be/FY9livorrJI
+
+Condition variable:
+https://youtu.be/0sVGnxg6Z3k?feature=shared
+
+Signalling for condition variables:
+https://youtu.be/RtTlIvnBw10?feature=shared
+
