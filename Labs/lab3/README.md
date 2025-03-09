@@ -47,11 +47,11 @@ CalTrain (the train running in California, USA) has decided to improve its effic
 
 ## 5. Helpful Resources
 
-What is Mutex?:
-https://youtu.be/oq29KUy29iQ
-
 What are race conditions?:
 https://youtu.be/FY9livorrJI
+
+What is Mutex?:
+https://youtu.be/oq29KUy29iQ
 
 Condition variable:
 https://youtu.be/0sVGnxg6Z3k?feature=shared
