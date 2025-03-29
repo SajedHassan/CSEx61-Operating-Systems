@@ -18,6 +18,8 @@ Using Docker, you will set up a multi-node Redis environment and implement the R
 ## **Problem Statement**
 Implement a **distributed locking mechanism** using the Redlock Algorithm to control access to a shared resource in a simulated distributed system. 
 
+Important note: Delivering the solution demonstrated during the section will be considered cheating. Please also notice that the requirements below are not covered by the solution demonstrated in the section.
+
 ### **Requirements**
 1. Simulate a multi-node Redis cluster using **Docker Compose** (5 Redis nodes).
 2. Implement the **Redlock Algorithm** in Python (or another programming language of choice).
