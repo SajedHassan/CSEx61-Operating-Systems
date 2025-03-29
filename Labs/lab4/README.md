@@ -25,6 +25,7 @@ Implement a **distributed locking mechanism** using the Redlock Algorithm to con
 4. Ensure fault tolerance:
    - The system must operate correctly even if up to **two Redis nodes** fail.
 5. Use logging to record lock acquisition, release, and failed attempts.
+6. All the processes in the system must acquire the lock eventually, so the process should retry again after a while if it fails to aquire the lock.
 
 ---
 
